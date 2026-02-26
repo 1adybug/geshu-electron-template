@@ -32,8 +32,8 @@
         "source-han-sans-sc-vf": "^0.0.1"
     },
     "devDependencies": {
+        "@1adybug/eslint": "^0.0.4",
         "@1adybug/prettier": "^0.0.27",
-        "@eslint/js": "^9.39.2",
         "@rsbuild/core": "^1.7.2",
         "@rsbuild/plugin-babel": "^1.1.0",
         "@rsbuild/plugin-react": "^1.4.4",
@@ -43,20 +43,14 @@
         "@types/react-dom": "^19.2.3",
         "autoprefixer": "^10.4.24",
         "babel-plugin-react-compiler": "^1.0.0",
-        "chokidar": "^5.0.0",
-        "concurrently": "^9.2.1",
-        "eslint": "^9.39.2",
-        "eslint-plugin-react-hooks": "^7.0.1",
-        "eslint-plugin-react-refresh": "^0.5.0",
-        "globals": "^17.3.0",
+        "eslint": "^9.39.3",
         "husky": "^9.1.7",
         "lint-staged": "^16.2.7",
         "postcss": "^8.5.6",
         "prettier": "^3.8.1",
         "sdrr": "^0.1.9",
         "tailwindcss": "^3.4.19",
-        "typescript": "^5.9.3",
-        "typescript-eslint": "^8.54.0"
+        "typescript": "^5.9.3"
     },
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"
