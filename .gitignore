@@ -32,3 +32,6 @@ test.ts
 test
 
 components/Router.tsx
+
+.env
+.env.*
