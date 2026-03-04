@@ -6,11 +6,11 @@ import Auth from "@/components/Auth"
 import Registry from "@/components/Registry"
 
 const Layout: FC = () => (
-    <Auth>
-        <Registry>
+    <Registry>
+        <Auth>
             <Outlet />
-        </Registry>
-    </Auth>
+        </Auth>
+    </Registry>
 )
 
 export default Layout
