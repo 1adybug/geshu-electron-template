@@ -28,9 +28,11 @@ export default defineConfig({
         pluginSvgr(),
     ],
     server: {
-        port: 5173,
+        port: 3060,
+        strictPort: true,
     },
     output: {
         polyfill: "entry",
+        assetPrefix: "./",
     },
 })
