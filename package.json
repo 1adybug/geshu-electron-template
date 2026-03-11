@@ -56,7 +56,7 @@
         "lint-staged": "^16.3.3",
         "postcss": "^8.5.8",
         "prettier": "^3.8.1",
-        "sdrr": "^0.1.17",
+        "sdrr": "^0.1.18",
         "tailwindcss": "^3.4.19",
         "typescript": "^5.9.3",
         "wait-on": "^9.0.4"
