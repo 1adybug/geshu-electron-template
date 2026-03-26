@@ -3,10 +3,9 @@
 ## Style Rules
 
 - 页面的 CSS 样式你应该尽量通过以下两种方式实现：
-
-  1. 对于 `Ant Design` 或者 `@heroui/react` 等组件库提供的组件，请在组件库提供的 `ConfigProvider` 等类似的全局配置组件进行修改，如果你需要修改某个组件的全局样式，你可以在 `@/components/Registry.tsx` 中进行修改，它包裹了整个应用，如果你只需要单独修改某个位置的某个组件，请使用 `ConfigProvider` 包裹你需要修改的组件
-  2. 对于一般样式，优先使用组件的 `className` 或者 `classNames` 或其他类名属性 + `tailwindcss` 实现
-  3. 有且仅有以上两种方式无法实现时，请你使用 `style` 属性或者在 css 文件中定义样式
+    1. 对于 `Ant Design` 或者 `@heroui/react` 等组件库提供的组件，请在组件库提供的 `ConfigProvider` 等类似的全局配置组件进行修改，如果你需要修改某个组件的全局样式，你可以在 `@/components/Registry.tsx` 中进行修改，它包裹了整个应用，如果你只需要单独修改某个位置的某个组件，请使用 `ConfigProvider` 包裹你需要修改的组件
+    2. 对于一般样式，优先使用组件的 `className` 或者 `classNames` 或其他类名属性 + `tailwindcss` 实现
+    3. 有且仅有以上两种方式无法实现时，请你使用 `style` 属性或者在 css 文件中定义样式
 
 - 当你使用 `flex` 布局时，对于宽度或者高度需要保持固定的子元素设置 `flex-none`
 - 对于 `React` 组件（也就是非 `div` 等 `html` 元素）的样式，请谨慎使用 `!important` 修改样式，请优先使用 `ConfigProvider` 或者组件暴露的属性（比如 `radius` / `shape`等）修改样式，最后再考虑使用 `!important`
@@ -47,7 +46,6 @@
 - 尽量为代码添加注释，尽量使用 `//` 而不是 `/** */`
 - 但是对于变量名、函数名、类型名、属性等具有明确意义的名称，使用 `/** 名称的作用 */` 进行注释
 - 尽量使用 `const` 而不是 `let`，除非需要使用 `let` 的特性
-- 尽量使用 `function` 而不是 `() => {}` 声明函数，除非是直接传递的回调函数或者 `React` 函数式组件
 - 尽量使用 `"` 而不是 `'`，除非是 `"` 中包含 `'`
 - 尽量不要使用 `;` 进行结尾
 - 尽量使用模板字符串而不是 `+` 进行字符串拼接
@@ -120,6 +118,28 @@
 - 除了 `React` 组件和页面以外所有的导出必须使用 `export` 关键字导出，不要使用 `export default` 关键字导出
 
 - 当一个文件中需要导出多个 `React` 组件时，主组件必须使用 `export default` 关键字导出，其他组件必须使用 `export` 关键字导出
+
+- 在你每次进行比较大的修改后，你必须使用 `tsc --noEmit` 和 `eslint` 检查代码，确保代码没有错误
+
+- 当你执行了一个 `mutation` 类型的操作后，你必须参考项目中更新数据的逻辑，更新所有需要更新的数据，比如如果你使用的使用 `@tanstack/react-query` 中 `useMutation` 时，你应该在 `onSuccess` 回调中更新所有需要更新的数据：`context.client.invalidateQueries({ queryKey: ["query-book"] })`
+
+- 如果你发现组件中使用 `messgae` 或者 `toast` 之类的提示方法并没有被导入，请不要自动导入，因为在我的大多数项目中，我都已经它们挂载在了全局对象上，可以直接使用，通常是在 `@/components/Registry.tsx` 中进行挂载，有且仅当 `tsc --noEmit` 检查出错误时，你才需要手动导入
+
+### 函数声明
+
+- **具名实体用 `function`**：凡是需要被导出（`export`）、在别处引用、或作为返回值（`return`）的具名函数，必须使用 `function` 关键字声明，并显式指定函数名。
+- **匿名逻辑用箭头函数**：凡是不需要变量名的临时逻辑、回调函数、内联函数，优先使用箭头函数。
+- **禁止**使用 `const add = (a, b) => ...` 这种形式定义顶层或具名工具函数。
+- **禁止**在 `map`、`filter`、`setTimeout` 等回调中使用 `function` 匿名函数。
+
+| 场景分类                 | 推荐声明形式                     | 示例                              |
+| :----------------------- | :------------------------------- | :-------------------------------- |
+| **顶层导出/工具函数**    | **必须**使用 `function`          | `export function formatData() {}` |
+| **React 函数式组件**     | **优先**使用箭头函数 + `FC` 类型 | `const MyComp: FC<P> = () => {}`  |
+| **自定义 Hooks**         | **必须**使用 `function`          | `export function useCustom() {}`  |
+| **数组/异步回调**        | **必须**使用箭头函数             | `.map(item => item.id)`           |
+| **高阶函数返回的函数**   | **必须**使用 `function` 并具名   | `return function resolver() {}`   |
+| **组件内独立的 Handler** | **必须**使用 `function`          | `function onSubmit() {}`          |
 
 ## React Rules
 
@@ -271,7 +291,11 @@
             doSomething()
         }
 
-        return <div onClick={onClick} {...rest}>Hello World!</div>
+        return (
+            <div onClick={onClick} {...rest}>
+                Hello World!
+            </div>
+        )
     }
     ```
 
@@ -353,7 +377,6 @@
 
         ```typescript
         import { createUseQuery } from "soda-tanstack-query"
-
         import { queryUser } from "@/apis/queryUser"
 
         export const useQueryUser = createUseQuery({
@@ -368,7 +391,6 @@
         ```typescript
         import { isNonNullable } from "deepsea-tools"
         import { createUseQuery } from "soda-tanstack-query"
-
         import { getUser } from "@/apis/getUser"
 
         export function getUserOptional(id?: string | undefined) {
@@ -385,7 +407,6 @@
 
         ```typescript
         import { useMutation, UseMutationOptions } from "@tanstack/react-query"
-        
         import { addUser } from "@/apis/addUser"
 
         // UseMutationOptions 的泛型参数为 api 函数的返回值类型、错误类型（默认 `Error`）、请求参数类型、上下文类型
@@ -412,6 +433,7 @@
                 onSuccess(data, variables, onMutateResult, context) {
                     // 成功后刷新 user 相关的 query
                     context.client.invalidateQueries({ queryKey: ["query-user"] })
+
                     context.client.invalidateQueries({ queryKey: ["get-user", data.id] })
 
                     message.open({
