@@ -2,6 +2,7 @@ import { defineConfig } from "@rsbuild/core"
 import { pluginBabel } from "@rsbuild/plugin-babel"
 import { pluginReact } from "@rsbuild/plugin-react"
 import { pluginSvgr } from "@rsbuild/plugin-svgr"
+import { sdrrRsbuildPlugin } from "sdrr/rsbuild"
 
 export default defineConfig({
     source: {
@@ -26,6 +27,7 @@ export default defineConfig({
             },
         }),
         pluginSvgr(),
+        sdrrRsbuildPlugin(),
     ],
     server: {
         port: 3060,

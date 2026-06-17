@@ -13,8 +13,8 @@ export const queryClient = new QueryClient({
     },
 })
 
-export const CookiePrefix = process.env.PUBLIC_COOKIE_PREFIX
+export const CookiePrefix = import.meta.env.PUBLIC_COOKIE_PREFIX
 
-export const ApiOrigin = process.env.PUBLIC_API_ORIGIN || location.origin
+export const ApiOrigin = import.meta.env.PUBLIC_API_ORIGIN || location.origin
 
-export const ApiPrefix = process.env.PUBLIC_API_PREFIX
+export const ApiPrefix = import.meta.env.PUBLIC_API_PREFIX
