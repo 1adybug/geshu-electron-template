@@ -1,4 +1,11 @@
-onlyBuiltDependencies:
-    - core-js
-    - electron
-    - unrs-resolver
+allowBuilds:
+    core-js: true
+    electron: true
+    unrs-resolver: true
+minimumReleaseAgeExclude:
+    - deepsea-tools
+    - sdrr
+    - soda-antd
+    - soda-hooks
+    - soda-react
+    - soda-tanstack-query
