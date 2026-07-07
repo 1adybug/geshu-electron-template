@@ -3,6 +3,7 @@ allowBuilds:
     electron: true
     unrs-resolver: true
 minimumReleaseAgeExclude:
+    - "@1adybug/xlsx"
     - deepsea-tools
     - sdrr
     - soda-antd

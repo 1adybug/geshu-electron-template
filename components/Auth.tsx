@@ -8,7 +8,7 @@ export interface AuthProps {
     children?: ReactNode
 }
 
-const Auth: FC<AuthProps> = ({ children }) => {
+export const Auth: FC<AuthProps> = ({ children }) => {
     const { pathname, search } = useLocation()
     const { data, isLoading } = useGetAccount()
 
@@ -18,5 +18,3 @@ const Auth: FC<AuthProps> = ({ children }) => {
 
     return children
 }
-
-export default Auth
