@@ -27,14 +27,14 @@
         "deepsea-tools": "^5.48.4",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
-        "react-router": "^7.18.1",
+        "react-router": "^8.1.0",
         "soda-antd": "^1.0.35",
         "soda-tanstack-query": "^0.0.16",
         "source-han-sans-sc-vf": "^0.0.1"
     },
     "devDependencies": {
-        "@1adybug/eslint": "^0.0.11",
-        "@1adybug/prettier": "^0.0.30",
+        "@1adybug/eslint": "^0.0.12",
+        "@1adybug/prettier": "^0.0.31",
         "@rsbuild/core": "^2.1.4",
         "@rsbuild/plugin-babel": "^2.0.1",
         "@rsbuild/plugin-react": "^2.0.1",

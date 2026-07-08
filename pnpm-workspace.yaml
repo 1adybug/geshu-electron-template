@@ -3,7 +3,13 @@ allowBuilds:
     electron: true
     unrs-resolver: true
 minimumReleaseAgeExclude:
+    - "@1adybug/eslint"
+    - "@1adybug/prettier"
+    - "@1adybug/prettier-plugin-block-padding"
+    - "@1adybug/prettier-plugin-remove-braces"
+    - "@1adybug/prettier-plugin-sort-imports"
     - "@1adybug/xlsx"
+    - deepsea-components
     - deepsea-tools
     - sdrr
     - soda-antd
