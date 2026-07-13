@@ -1,5 +1,4 @@
 import { defineConfig } from "@rsbuild/core"
-import { pluginBabel } from "@rsbuild/plugin-babel"
 import { pluginReact } from "@rsbuild/plugin-react"
 import { pluginSvgr } from "@rsbuild/plugin-svgr"
 import { sdrrRsbuildPlugin } from "sdrr/rsbuild"
@@ -18,13 +17,8 @@ export default defineConfig({
         mountId: "root",
     },
     plugins: [
-        pluginReact(),
-        pluginBabel({
-            include: /\.(?:jsx|tsx)$/,
-            babelLoaderOptions(config) {
-                config.plugins ??= []
-                config.plugins?.unshift("babel-plugin-react-compiler")
-            },
+        pluginReact({
+            reactCompiler: true,
         }),
         pluginSvgr(),
         sdrrRsbuildPlugin(),
