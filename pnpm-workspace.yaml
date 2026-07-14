@@ -16,3 +16,4 @@ minimumReleaseAgeExclude:
     - soda-hooks
     - soda-react
     - soda-tanstack-query
+    - soda-type
