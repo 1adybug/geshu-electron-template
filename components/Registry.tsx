@@ -32,7 +32,7 @@ export const Registry: FC<RegistryProps> = ({ children }) => {
     return (
         <QueryClientProvider client={queryClient}>
             <StyleProvider hashPriority="high" layer>
-                <ConfigProvider locale={zhCN} theme={{ token: { fontFamily: "Source Han Sans SC VF" } }}>
+                <ConfigProvider locale={zhCN} theme={{ token: { fontFamily: "Noto Sans SC Variable" } }}>
                     {context}
                     {children}
                 </ConfigProvider>

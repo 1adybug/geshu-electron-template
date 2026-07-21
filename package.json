@@ -20,6 +20,7 @@
     },
     "dependencies": {
         "@ant-design/cssinjs": "^2.1.2",
+        "@fontsource-variable/noto-sans-sc": "^5.3.0",
         "@tanstack/react-query": "^5.101.2",
         "antd": "^6.5.1",
         "core-js": "^3.49.0",
@@ -29,8 +30,7 @@
         "react-dom": "^19.2.7",
         "react-router": "^8.2.0",
         "soda-antd": "^1.0.37",
-        "soda-tanstack-query": "^0.0.16",
-        "source-han-sans-sc-vf": "^0.0.1"
+        "soda-tanstack-query": "^0.0.16"
     },
     "devDependencies": {
         "@1adybug/eslint": "^0.0.12",
