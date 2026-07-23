@@ -29,3 +29,12 @@ pnpm run build
 ```bash
 pnpm run start
 ```
+
+## 开发端口
+
+开发服务读取进程环境变量 `PORT`，未设置时使用 `5173`。PowerShell 中可这样指定端口：
+
+```powershell
+$env:PORT = "5174"
+pnpm dev
+```
