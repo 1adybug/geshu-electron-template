@@ -1,9 +1,12 @@
-/* eslint-disable */
+/* eslint-disable prefer-arrow-callback */
 
 // @ts-check
 
 import { spawn } from "node:child_process"
 import { createRequire } from "node:module"
+import process from "node:process"
+
+import { getDevelopmentPort } from "./development-port.mjs"
 
 /** CommonJS require */
 const require = createRequire(import.meta.url)
@@ -13,7 +16,11 @@ const require = createRequire(import.meta.url)
 const electronBinary = require("electron")
 
 /** 透传给 Electron 的参数 */
-const args = process.argv.slice(2)
+const args = process.argv.slice(2).filter(function excludeDevelopmentFlag(arg) {
+    return arg !== "--development"
+})
+
+if (process.argv.includes("--development")) args.push(`--renderer-url=http://127.0.0.1:${getDevelopmentPort()}`)
 
 /** 启动环境变量 */
 const env = { ...process.env }
